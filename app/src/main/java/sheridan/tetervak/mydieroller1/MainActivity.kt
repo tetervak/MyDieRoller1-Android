@@ -3,11 +3,11 @@ package sheridan.tetervak.mydieroller1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 
 import android.widget.Toast
 import sheridan.tetervak.mydieroller1.databinding.ActivityMainBinding
+
+import sheridan.tetervak.mydieroller1.model.Die
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var dieValue: Int = 0
+    private var die = Die()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState is Bundle){
             val savedResult: Int = savedInstanceState.getInt(RESULT)
             if(savedResult > 0){
-                dieValue = savedResult
+                die.value = savedResult
                 binding.rollResult.text = savedResult.toString()
             }
         }
@@ -40,15 +40,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Rolled", Toast.LENGTH_LONG).show()
             Log.d(TAG, "The die is rolled")
 
-            dieValue = (1..6).random()
-            binding.rollResult.text = dieValue.toString()
+            die.roll()
+            binding.rollResult.text = die.value.toString()
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        if(dieValue > 0){
-            outState.putInt(RESULT, dieValue)
+        if(die.value > 0){
+            outState.putInt(RESULT, die.value)
         }
 
     }
