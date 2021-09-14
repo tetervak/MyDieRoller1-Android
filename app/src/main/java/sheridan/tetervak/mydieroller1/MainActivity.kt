@@ -31,19 +31,16 @@ class MainActivity : AppCompatActivity() {
             val savedResult: Int = savedInstanceState.getInt(RESULT)
             if(savedResult > 0){
                 dieValue = savedResult
-                //val rollResult: TextView = findViewById(R.id.roll_result)
                 binding.rollResult.text = savedResult.toString()
             }
         }
 
 
-        //val rollButton: Button = findViewById(R.id.roll_button)
         binding.rollButton.setOnClickListener {
             Toast.makeText(this, "Rolled", Toast.LENGTH_LONG).show()
             Log.d(TAG, "The die is rolled")
 
             dieValue = (1..6).random()
-            //val rollResult: TextView = findViewById(R.id.roll_result)
             binding.rollResult.text = dieValue.toString()
         }
     }
