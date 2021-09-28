@@ -23,16 +23,17 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(viewModel.dieValue > 0){
-            binding.rollResult.text = viewModel.dieValue.toString()
+
+        viewModel.dieValue.observe(this){
+            if(it > 0){
+                binding.rollResult.text = it.toString()
+            }
         }
 
         binding.rollButton.setOnClickListener {
             Toast.makeText(this, "Rolled", Toast.LENGTH_LONG).show()
             Log.d(TAG, "The die is rolled")
-
             viewModel.roll()
-            binding.rollResult.text = viewModel.dieValue.toString()
         }
     }
 }
