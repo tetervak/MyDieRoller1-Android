@@ -27,7 +27,7 @@
             android:id="@+id/roll_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.dieValue>0?viewModel.dieValue.toString():@string/space}"
+            dieValue="@{viewModel.dieValue}"
             android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             tools:text="5" />
 
