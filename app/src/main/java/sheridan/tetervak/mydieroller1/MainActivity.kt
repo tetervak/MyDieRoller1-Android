@@ -18,11 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
-        viewModel.dieValue.observe(this){
-            if(it > 0){
-                binding.rollResult.text = it.toString()
-            }
-        }
     }
 }
