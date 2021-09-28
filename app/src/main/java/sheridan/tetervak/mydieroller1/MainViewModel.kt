@@ -5,5 +5,13 @@ import sheridan.tetervak.mydieroller1.model.Die
 
 class MainViewModel: ViewModel() {
 
-    val die: Die = Die()
+    private val die: Die = Die()
+
+    val dieValue: Int
+    get() = die.value
+
+    fun roll(){
+        die.roll()
+    }
+
 }

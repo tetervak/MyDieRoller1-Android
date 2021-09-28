@@ -12,8 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         const val TAG = "MainActivity"
-        const val RESULT = "Result"
-
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -25,16 +23,16 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(viewModel.die.value > 0){
-            binding.rollResult.text = viewModel.die.value.toString()
+        if(viewModel.dieValue > 0){
+            binding.rollResult.text = viewModel.dieValue.toString()
         }
 
         binding.rollButton.setOnClickListener {
             Toast.makeText(this, "Rolled", Toast.LENGTH_LONG).show()
             Log.d(TAG, "The die is rolled")
 
-            viewModel.die.roll()
-            binding.rollResult.text = viewModel.die.value.toString()
+            viewModel.roll()
+            binding.rollResult.text = viewModel.dieValue.toString()
         }
     }
 }
